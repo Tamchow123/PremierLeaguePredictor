@@ -46,11 +46,18 @@
   height: auto;
 }
 
-.pl-logo img:hover {
-  transform: scale(1.2); /* Enlarge the logo on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-  cursor: pointer;
+
+
+
+
+.main-navbar a{
+  color: #ffffff;
+  font-weight: bold;
+  margin: 0 15px; /* Add spacing between left and right nav items */
+  font-size: 1.2em; /* Increase font size */
+  text-decoration: none; /* Remove underline */
 }
 
-
-
+.main-navbar a:hover {
+  text-decoration: underline; /* Underline the text on hover */
+}
