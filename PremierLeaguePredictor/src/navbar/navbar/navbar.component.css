@@ -1,0 +1,63 @@
+/* Club logos section */
+.club-logos {
+  background-color: #ffffff; /* White background */
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  overflow-x: auto; /* Allow horizontal scrolling for small screens */
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+.club-logos img:hover {
+  transform: scale(1.2); /* Enlarge the logo to 120% */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.club-logos img {
+  width: 30px;
+  height: auto;
+  margin: 0 8px; /* Consistent spacing between logos */
+}
+
+.club-logos a:first-child {
+  font-weight: bold;
+  margin-right: 20px; /* Space between label and logos */
+}
+
+/* Navbar styles */
+.main-navbar {
+  background-color: #38043c; /* Premier League purple */
+  padding: 10px 20px;
+  position: relative; /* Enables precise positioning of child elements */
+  z-index: 1; /* Ensures proper stacking order */
+  height: 60px;
+}
+
+.pl-logo {
+  position: absolute; /* Allows the logo to extend beyond the navbar */
+  top: 50%; /* Start positioning relative to the center */
+  transform: translateY(-50%); /* Center vertically */
+  z-index: 2; /* Places the logo above the navbar content */
+}
+
+.pl-logo img {
+  width: 80px; /* Adjust the size as needed */
+  height: auto;
+}
+
+
+
+
+
+.main-navbar a{
+  color: #ffffff;
+  font-weight: bold;
+  margin: 0 15px; /* Add spacing between left and right nav items */
+  font-size: 1.2em; /* Increase font size */
+  text-decoration: none; /* Remove underline */
+}
+
+.main-navbar a:hover {
+  text-decoration: underline; /* Underline the text on hover */
+}

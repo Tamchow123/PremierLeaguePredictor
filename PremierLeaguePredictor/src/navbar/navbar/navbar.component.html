@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier League Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        .navbar {
+            background-color: #2A064D; /* Premier League purple */
+        }
+        .navbar-brand img {
+            width: 50px;
+            height: auto;
+        }
+        .club-logos img {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+        }
+        .navbar-toggler {
+            background-color: white;
+        }
+        .dropdown-menu {
+            background-color: #2A064D;
+        }
+        .dropdown-item {
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="club-logos">
+      <span style="padding-left: 100px;">Club Sites:</span>
+      <a href="https://www.arsenal.com" target="_blank">
+          <img src="assets/arsenal.png" alt="Arsenal">
+      </a>
+      <a href="https://www.avfc.co.uk" target="_blank">
+          <img src="assets/aston.png" alt="Aston Villa">
+      </a>
+      <a href="https://www.afcb.co.uk" target="_blank">
+          <img src="assets/bourne.png" alt="Bournemouth">
+      </a>
+      <a href="https://www.brentfordfc.com" target="_blank">
+          <img src="assets/brent.png" alt="Brentford">
+      </a>
+      <a href="https://www.brightonandhovealbion.com" target="_blank">
+          <img src="assets/bright.png" alt="Brighton & Hove Albion">
+      </a>
+      <a href="https://www.chelseafc.com" target="_blank">
+          <img src="assets/chels.png" alt="Chelsea">
+      </a>
+      <a href="https://www.cpfc.co.uk" target="_blank">
+          <img src="assets/cryst.png" alt="Crystal Palace">
+      </a>
+      <a href="https://www.evertonfc.com" target="_blank">
+          <img src="assets/eve.png" alt="Everton">
+      </a>
+      <a href="https://www.fulhamfc.com" target="_blank">
+          <img src="assets/fulh.png" alt="Fulham">
+      </a>
+      <a href="https://www.itfc.co.uk" target="_blank">
+          <img src="assets/ips.png" alt="Ipswich Town">
+      </a>
+      <a href="https://www.lcfc.com" target="_blank">
+          <img src="assets/leic.png" alt="Leicester City">
+      </a>
+      <a href="https://www.liverpoolfc.com" target="_blank">
+          <img src="assets/liverpool.png" alt="Liverpool">
+      </a>
+      <a href="https://www.mancity.com" target="_blank">
+          <img src="assets/mancity.png" alt="Manchester City">
+      </a>
+      <a href="https://www.manutd.com" target="_blank">
+          <img src="assets/manu.png" alt="Manchester United">
+      </a>
+      <a href="https://www.nufc.co.uk" target="_blank">
+          <img src="assets/newc.png" alt="Newcastle United">
+      </a>
+      <a href="https://www.nottinghamforest.co.uk" target="_blank">
+          <img src="assets/notti.png" alt="Nottingham Forest">
+      </a>
+      <a href="https://www.southamptonfc.com" target="_blank">
+          <img src="assets/south.png" alt="Southampton">
+      </a>
+      <a href="https://www.tottenhamhotspur.com" target="_blank">
+          <img src="assets/tott.png" alt="Tottenham Hotspur">
+      </a>
+      <a href="https://www.whufc.com" target="_blank">
+          <img src="assets/west.png" alt="West Ham United">
+      </a>
+      <a href="https://www.wolves.co.uk" target="_blank">
+          <img src="assets/wolves.png" alt="Wolverhampton Wanderers">
+      </a>
+
+          <!-- Add more club logos as necessary -->
+      </div>
+      <div>
+        <nav class="main-navbar">
+          <div class="container-fluid d-flex justify-content-between align-items-center">
+            <!-- Premier League Logo -->
+            <a class="pl-logo" href="https://www.premierleague.com/home">
+              <img src="/assets/pl-main-logo.png" alt="Premier League Logo">
+            </a>
+            <div class="nav-items" style="padding-left: 150px; padding-top: 2px;" >
+              <a >Home</a>
+              <a  routerLink="table">Table</a>
+              <a  href="">Matches</a>
+              <a  href="">Home</a>
+            </div>
+            <a href="">Login/Register</a>
+          </div>
+        </nav>
+      </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
