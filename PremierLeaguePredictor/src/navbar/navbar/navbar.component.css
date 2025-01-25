@@ -61,3 +61,28 @@
 .main-navbar a:hover {
   text-decoration: underline; /* Underline the text on hover */
 }
+
+.navbar {
+  background-color: #2A064D; /* Premier League purple */
+}
+.navbar-brand img {
+  width: 50px;
+  height: auto;
+}
+.club-logos img {
+  width: 30px;
+  height: auto;
+  margin-right: 10px;
+}
+.navbar-nav .nav-link {
+  color: white !important;
+}
+.navbar-toggler {
+  background-color: white;
+}
+.dropdown-menu {
+  background-color: #2A064D;
+}
+.dropdown-item {
+  color: white !important;
+}
