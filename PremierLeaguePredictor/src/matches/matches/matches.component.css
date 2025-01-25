@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center; /* Center text inside body */
+}
+
+.fixtures-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto; /* Center the container horizontally */
+  text-align: center; /* Center text inside container */
+}
+
+.date-header {
+  background-color: #56042c; /* Premier League purple */
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.date-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.fixture {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* Three columns: home team, time, away team */
+  align-items: center; /* Center vertically */
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.fixture:last-child {
+  border-bottom: none;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align team names and logos to the start */
+}
+
+.away-team {
+  justify-content: flex-end; /* Align away teams to the right */
+}
+
+.team-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.team-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap; /* Prevent team names from breaking into multiple lines */
+}
+
+.match-time {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+  white-space: nowrap; /* Prevent wrapping for the time */
+}

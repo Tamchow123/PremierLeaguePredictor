@@ -1,0 +1,25 @@
+<div class="fixtures-container">
+  <ng-container *ngIf="matches$ | async as matches">
+    <ng-container *ngFor="let match of matches">
+      <!-- Date Header -->
+      <ng-container *ngIf="shouldUpdateDate(match.utcDate)">
+        <div class="date-header">
+          <h2>{{ showDate }}</h2>
+        </div>
+      </ng-container>
+
+      <!-- Match Fixture -->
+      <div class="fixture">
+        <div class="team">
+          <img [src]="match.homeTeam.crest" alt="{{ match.homeTeam.name }} logo" class="team-logo" />
+          <span class="team-name">{{ match.homeTeam.shortName }}</span>
+        </div>
+        <div class="match-time">{{ match.utcDate | date: 'shortTime' }}</div>
+        <div class="team away-team">
+          <span class="team-name">{{ match.awayTeam.shortName }}</span>
+          <img [src]="match.awayTeam.crest" alt="{{ match.awayTeam.name }} logo" class="team-logo" />
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
