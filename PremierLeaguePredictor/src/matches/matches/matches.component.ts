@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Matches } from './models/matches-model';
 import { TableComponent } from '../../table/table/table.component';
 import { TableServiceService } from '../../table/table-service.service';
@@ -17,15 +17,16 @@ import { CommonModule } from '@angular/common';
 export class MatchesComponent implements OnInit {
 
   matches$?: Observable<Matches[]>;
-  matchDay$?: Observable<Matches[]>;
   currentMatchday: number = 0;
   tempDate: string = '';
   showDate: string = '';
+  getMatchdaySubscription?: Subscription;
 
   constructor(private tableService: TableServiceService) { }
 
   ngOnInit(): void {
     this.matches$ = this.tableService.getFixtures();
+    this.getMatchdaySubscription =this.tableService.getMatchDay().subscribe(matchday => this.currentMatchday = matchday);
 
   }
 
@@ -39,6 +40,10 @@ export class MatchesComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  ngOnDestroy(): void {
+    this.getMatchdaySubscription?.unsubscribe();
   }
 
 
