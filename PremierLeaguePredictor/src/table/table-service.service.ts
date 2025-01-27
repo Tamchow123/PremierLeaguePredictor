@@ -11,8 +11,6 @@ import { Matches } from '../matches/matches/models/matches-model';
 })
 export class TableServiceService {
   matchDay$?: Observable<Matches[]>;
-  currentMatchday: number = 0;
-
 
   headers: HttpHeaders = new HttpHeaders().set('X-Auth-Token', environment.apiKey);
 
@@ -50,39 +48,7 @@ export class TableServiceService {
 
 
 
-getMatchDay(): Observable<number> {
-  return this.http
-    .get<{ matches: Matches[] }>('http://localhost:4200/api/v4/competitions/PL/matches?matchday=1', {
-      headers: this.headers,
-    })
-    .pipe(
-      map((response) => response.matches), // Extract the matches array
-      map((matches) => matches[0]?.season.currentMatchday), // Get current matchday from the first match
-    );
-}
 
-// Updated getFixtures() function
-getFixtures(): Observable<Matches[]> {
-  return this.getMatchDay().pipe(
-    switchMap((currentMatchday) => {
-      if (!currentMatchday) {
-        console.error('No current matchday found!');
-        return of([]); // Return an empty array if no matchday is available
-      }
-
-      return this.http
-        .get<{ matches: Matches[] }>(
-          `http://localhost:4200/api/v4/competitions/PL/matches?matchday=${currentMatchday}`,
-          {
-            headers: this.headers,
-          }
-        )
-        .pipe(
-          map((response) => response.matches), // Extract the matches array
-        );
-    })
-  );
-}
 
 
 

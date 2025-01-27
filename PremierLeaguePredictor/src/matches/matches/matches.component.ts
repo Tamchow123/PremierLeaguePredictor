@@ -4,6 +4,7 @@ import { Matches } from './models/matches-model';
 import { TableComponent } from '../../table/table/table.component';
 import { TableServiceService } from '../../table/table-service.service';
 import { CommonModule } from '@angular/common';
+import { MatchesService } from '../matches.service';
 
 
 
@@ -22,11 +23,11 @@ export class MatchesComponent implements OnInit {
   showDate: string = '';
   getMatchdaySubscription?: Subscription;
 
-  constructor(private tableService: TableServiceService) { }
+  constructor(private matchService: MatchesService) { }
 
   ngOnInit(): void {
-    this.matches$ = this.tableService.getFixtures();
-    this.getMatchdaySubscription =this.tableService.getMatchDay().subscribe(matchday => this.currentMatchday = matchday);
+    this.matches$ = this.matchService.getFixtures();
+    this.getMatchdaySubscription =this.matchService.getMatchDay().subscribe(matchday => this.currentMatchday = matchday);
 
   }
 
@@ -40,6 +41,16 @@ export class MatchesComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  nextMatchday(): void {
+    this.currentMatchday++;
+    this.matches$ = this.matchService.getFixtures(this.currentMatchday);
+  }
+
+  previousMatchday(): void {
+    this.currentMatchday--;
+    this.matches$ = this.matchService.getFixtures(this.currentMatchday);
   }
 
   ngOnDestroy(): void {

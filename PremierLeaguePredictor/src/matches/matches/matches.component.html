@@ -1,8 +1,18 @@
+<div class="navigation-container">
+  <ng-container *ngIf="currentMatchday != 1">
+    <button class="button button-previous" (click)="previousMatchday()"> < Previous </button>
+  </ng-container>
+  <div class="matchDay-header">
+    <h1> Gameweek {{currentMatchday}}</h1>
+  </div>
+  <ng-container *ngIf="currentMatchday != 38">
+    <button class="button button-next" (click)="nextMatchday()"> Next > </button>
+  </ng-container>
+</div>
+
 <div class="fixtures-container">
   <ng-container *ngIf="matches$ | async as matches">
-    <div class="matchDay-header">
-      <h1> Gameweek {{currentMatchday}}</h1>
-    </div>
+
     <ng-container *ngFor="let match of matches">
       <!-- Date Header -->
       <ng-container *ngIf="shouldUpdateDate(match.utcDate)">
@@ -42,3 +52,4 @@
     </ng-container>
   </ng-container>
 </div>
+

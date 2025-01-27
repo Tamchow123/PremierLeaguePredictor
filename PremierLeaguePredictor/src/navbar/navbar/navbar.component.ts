@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   constructor(private navbarService: NavbarService ) { }
 
   ngOnInit(): void {
-    this.teams$ = this.navbarService.getTeams();
+    // this.teams$ = this.navbarService.getTeams(); DISABLED TO LOWER API REQUESTS
   }
 
 }
