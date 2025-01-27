@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\PremierLeaguePredictor\\API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API.csproj": {}
+    "C:\\Projects\\PremierLeaguePredictor\\PremierLeaguePredictor\\API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\PremierLeaguePredictor\\API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API.csproj": {
+    "C:\\Projects\\PremierLeaguePredictor\\PremierLeaguePredictor\\API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\PremierLeaguePredictor\\API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API.csproj",
+        "projectUniqueName": "C:\\Projects\\PremierLeaguePredictor\\PremierLeaguePredictor\\API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API.csproj",
         "projectName": "PremierLeaguePredictory.API",
-        "projectPath": "C:\\Projects\\PremierLeaguePredictor\\API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API.csproj",
+        "projectPath": "C:\\Projects\\PremierLeaguePredictor\\PremierLeaguePredictor\\API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API.csproj",
         "packagesPath": "C:\\Users\\Tamee\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\PremierLeaguePredictor\\API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API\\obj\\",
+        "outputPath": "C:\\Projects\\PremierLeaguePredictor\\PremierLeaguePredictor\\API\\PremierLeaguePredictory.API\\PremierLeaguePredictory.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Tamee\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,6 +46,16 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"

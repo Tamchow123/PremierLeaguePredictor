@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "PremierLeaguePredictory.API.Controllers.TeamController",
+    "Method": "AddTeam",
+    "RelativePath": "api/Team",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "PremierLeaguePredictory.API.Models.DTO.CreateTeamRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

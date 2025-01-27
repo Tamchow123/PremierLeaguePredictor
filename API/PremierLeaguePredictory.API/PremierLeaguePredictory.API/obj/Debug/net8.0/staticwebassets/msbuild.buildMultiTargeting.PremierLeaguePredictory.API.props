@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PremierLeaguePredictory.API.props" />
+</Project>
