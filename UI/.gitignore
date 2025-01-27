@@ -44,3 +44,8 @@ Thumbs.db
 # Environment Files
 src/environments/environment.ts
 src/environments/environment.development.ts
+
+# ASP.NET Core build artifacts
+/API/bin/
+/API/obj/
+/API/*.user
