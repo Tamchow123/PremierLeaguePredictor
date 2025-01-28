@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PremierLeaguePredictory.API.Data;
 using PremierLeaguePredictory.API.Models.Domain;
 using PremierLeaguePredictory.API.Models.DTO;
+using PremierLeaguePredictory.API.Services.Interfaces;
 
 
 
@@ -14,45 +16,54 @@ namespace PremierLeaguePredictory.API.Controllers
     public class TeamController : ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
+        private readonly IExternalApiService externalApiService;
+        private readonly ITeamsRepository teamsRepository;
 
-        public TeamController(ApplicationDbContext dbContext)
+
+        public TeamController(ApplicationDbContext dbContext, IExternalApiService externalApiService, ITeamsRepository teamsRepository)
         {
             this.dbContext = dbContext;
+            this.externalApiService = externalApiService;
+            this.teamsRepository = teamsRepository;
+
         }
+
+
 
         [HttpPost]
         public async Task<IActionResult> AddTeam(CreateTeamRequestDto request)
         {
-            // Map DTO to Domain Model
-            var team = new Teams
-            {
-                Name = request.Name,
-                ShortName = request.ShortName,
-                Logo = request.Logo,
-                Stadium = request.Stadium,
-                Manager = request.Manager,
-                Location = request.Location,
-                Website = request.Website
-            };
+            var teams = await externalApiService.FetchTeamsFromApiAsync();
 
-            // Add to Database
-            await dbContext.Teams.AddAsync(team);
+            foreach (var team in teams)
+            {
+                var existingTeam = await dbContext.Teams.FirstOrDefaultAsync(t => t.Name == team.Name);
+                if (existingTeam == null)
+                {
+                    await dbContext.Teams.AddAsync(team);
+                }
+                else
+                {
+                    await UpdateTeam(team);
+                }
+            }
+
             await dbContext.SaveChangesAsync();
 
-            // Domain Model to DTO
-            var response = new TeamDto
-            {
-                TeamId = team.TeamId,
-                Name = team.Name,
-                ShortName = team.ShortName,
-                Logo = team.Logo,
-                Stadium = team.Stadium,
-                Manager = team.Manager,
-                Location = team.Location,
-                Website = team.Website
-            };
+            return Ok(new { message = "Teams added successfully!" });
+        }
 
-            return Ok(response);
+        [HttpPut]
+        public async Task<IActionResult> UpdateTeam(Teams team)
+        {
+            var updatedTeam = await teamsRepository.UpdateAsync(team);
+
+            if(updatedTeam is null)
+            {
+                return NotFound();
+            }
+
+            return Ok();
         }
 
     }

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PremierLeaguePredictory.API.Data;
+using PremierLeaguePredictory.API.Services.Implementations;
+using PremierLeaguePredictory.API.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,11 +11,20 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient();
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("PremierLeaguePredictionsConnectionString"));
 });
+
+builder.Services.AddHttpClient<IExternalApiService, ExternalApiService>();
+builder.Services.AddScoped<IExternalApiService, ExternalApiService>();
+builder.Services.AddScoped<ITeamsRepository, TeamsRepository>();
+
+
+
 
 var app = builder.Build();
 

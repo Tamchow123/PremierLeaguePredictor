@@ -14,5 +14,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PremierLeaguePredictory.API.Controllers.TeamController",
+    "Method": "UpdateTeam",
+    "RelativePath": "api/Team",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "PremierLeaguePredictory.API.Models.Domain.Teams",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
