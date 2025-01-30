@@ -4,7 +4,7 @@
 
       <ng-container *ngIf="teams$ | async as teams" >
         <a *ngFor="let team of teams" [href]="team.website" target="_blank">
-          <img [src]="team.crest" alt="{{ team.name }}">
+          <img [src]="team.logo" alt="{{ team.name }}">
         </a>
       </ng-container>
 
@@ -24,7 +24,7 @@
               <a  routerLink="matches">Matches</a>
               <a  routerLink="stats">Stats</a>
             </div>
-            <a href="">Login/Register</a>
+            <a  routerLink="login">Login</a>
           </div>
         </nav>
       </div>

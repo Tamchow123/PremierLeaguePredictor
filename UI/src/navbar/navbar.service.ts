@@ -11,17 +11,15 @@ import { Teams } from './models/teams-model';
 })
 export class NavbarService {
 
-  headers: HttpHeaders = new HttpHeaders().set('X-Auth-Token', environment.apiKey);
+  // headers: HttpHeaders = new HttpHeaders().set('X-Auth-Token', environment.apiKey);
 
   constructor(private http: HttpClient) { }
 
   getTeams(): Observable<Teams[]> {
-    return this.http
-      .get<{ teams: Teams[] }>('http://localhost:4200/api/v4/competitions/PL/teams', {
-        headers: this.headers,
-      })
-      .pipe(
-        map((response) => response.teams) // Extract the teams array
-      );
+
+      return this.http.get<Teams[]>(`https://localhost:7219/api/Team`);
+
   }
+
+  
 }
