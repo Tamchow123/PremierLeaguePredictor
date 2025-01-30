@@ -22,6 +22,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddHttpClient<IExternalApiService, ExternalApiService>();
 builder.Services.AddScoped<IExternalApiService, ExternalApiService>();
 builder.Services.AddScoped<ITeamsRepository, TeamsRepository>();
+builder.Services.AddScoped<IFixturesRepository, FixturesRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 
@@ -36,6 +38,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(options =>
+{
+    options.AllowAnyHeader();
+    options.AllowAnyOrigin();
+    options.AllowAnyMethod();
+
+});
 
 app.UseAuthorization();
 

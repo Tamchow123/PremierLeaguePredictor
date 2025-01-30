@@ -5,5 +5,7 @@ namespace PremierLeaguePredictory.API.Services.Interfaces
     public interface IExternalApiService
     {
         Task<List<Teams>> FetchTeamsFromApiAsync();
+
+        Task<List<Fixtures>> FetchFixturesFromApiAsync();   
     }
 }

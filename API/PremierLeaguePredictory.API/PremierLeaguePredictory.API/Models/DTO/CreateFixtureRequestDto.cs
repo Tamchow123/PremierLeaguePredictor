@@ -1,11 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PremierLeaguePredictory.API.Models.Domain
+﻿namespace PremierLeaguePredictory.API.Models.DTO
 {
-    public class Fixtures
+    public class CreateFixtureRequestDto
     {
-        [Key]
-        public Guid FixtureId { get; set; }
         public int Gameweek { get; set; }
         public DateTime KickOff { get; set; }
         public string HomeTeam { get; set; }

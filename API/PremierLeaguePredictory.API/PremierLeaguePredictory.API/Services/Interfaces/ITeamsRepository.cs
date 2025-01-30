@@ -6,5 +6,7 @@ namespace PremierLeaguePredictory.API.Services.Interfaces
     {
         Task<Teams> UpdateAsync(Teams team);
 
+        Task<IEnumerable<Teams>> GetAllAsync();
+
     }
 }

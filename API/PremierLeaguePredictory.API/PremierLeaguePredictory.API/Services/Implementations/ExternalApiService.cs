@@ -20,7 +20,7 @@ public class ExternalApiService : IExternalApiService
 
         if (string.IsNullOrEmpty(apiKey))
         {
-            throw new Exception("API Key is missing. Check appsettings.json");
+            throw new Exception("API Key is missing.");
         }
 
         if (!_httpClient.DefaultRequestHeaders.Contains("X-Auth-Token"))
@@ -57,5 +57,50 @@ public class ExternalApiService : IExternalApiService
         }
 
         throw new Exception($"Failed to fetch teams: {response.StatusCode}");
+    }
+
+    public async Task<List<Fixtures>> FetchFixturesFromApiAsync()
+    {
+        var apiUrl = "https://api.football-data.org/v4/competitions/PL/matches";
+        var apiKey = _configuration["ExternalApi:ApiKey"];
+
+        if (string.IsNullOrEmpty(apiKey))
+        {
+            throw new Exception("API Key is missing.");
+        }
+
+        if (!_httpClient.DefaultRequestHeaders.Contains("X-Auth-Token"))
+        {
+            _httpClient.DefaultRequestHeaders.Add("X-Auth-Token", apiKey);
+        }
+
+        var response = await _httpClient.GetAsync(apiUrl);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var jsonData = await response.Content.ReadAsStringAsync();
+            // Deserialize to match the JSON structure
+            var apiResponse = JsonSerializer.Deserialize<FixtureApiResponse>(jsonData);
+            if (apiResponse == null || apiResponse == null)
+            {
+                throw new Exception("API response is null or does not contain matches.");
+            }
+            // Map API response to your domain model
+            var fixtures = apiResponse.Fixtures.Select(apiMatch => new Fixtures
+            {
+                Gameweek = apiMatch.Gameweek,
+                KickOff = apiMatch.KickOff,
+                HomeTeam = apiMatch.HomeTeam.Name,
+                AwayTeam = apiMatch.AwayTeam.Name,
+                HomeTeamScore = apiMatch.Score.FullTime.HomeTeamScore,
+                AwayTeamScore = apiMatch.Score.FullTime.AwayTeamScore,
+                Status = apiMatch.Status,
+                Season = apiResponse.Filters.Season, // Accessing season from Filters
+                Winner = apiMatch.Score.Winner
+            }).ToList();
+            return fixtures;
+        }
+
+        throw new Exception($"Failed to fetch fixtures: {response.StatusCode}");
     }
 }

@@ -28,7 +28,27 @@ namespace PremierLeaguePredictory.API.Controllers
 
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllTeams()
+        {
+            var teams = await teamsRepository.GetAllAsync();
 
+            // Map Domain model to DTO
+            var response = new List<TeamDto>();
+            foreach (var team in teams)
+            {
+                response.Add(new TeamDto
+                {
+                    Name = team.Name,
+                    ShortName = team.Name,
+                    Logo = team.Logo,
+                    Stadium = team.Stadium,
+                    Manager = team.Manager,
+                    Website = team.Website
+                });
+            }
+            return Ok(response);
+        }
 
         [HttpPost]
         public async Task<IActionResult> AddTeam(CreateTeamRequestDto request)

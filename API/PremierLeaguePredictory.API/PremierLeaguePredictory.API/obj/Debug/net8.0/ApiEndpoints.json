@@ -1,5 +1,47 @@
 [
   {
+    "ContainingType": "PremierLeaguePredictory.API.Controllers.FixturesController",
+    "Method": "AddFixture",
+    "RelativePath": "api/Fixtures",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "PremierLeaguePredictory.API.Models.DTO.CreateFixtureRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PremierLeaguePredictory.API.Controllers.FixturesController",
+    "Method": "UpdateFixture",
+    "RelativePath": "api/Fixtures",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fixture",
+        "Type": "PremierLeaguePredictory.API.Models.Domain.Fixtures",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PremierLeaguePredictory.API.Controllers.TeamController",
+    "Method": "GetAllTeams",
+    "RelativePath": "api/Team",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "PremierLeaguePredictory.API.Controllers.TeamController",
     "Method": "AddTeam",
     "RelativePath": "api/Team",
@@ -26,6 +68,22 @@
       {
         "Name": "team",
         "Type": "PremierLeaguePredictory.API.Models.Domain.Teams",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PremierLeaguePredictory.API.Controllers.UserController",
+    "Method": "CreateUser",
+    "RelativePath": "api/User",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "PremierLeaguePredictory.API.Models.DTO.CreateUserRequestDto",
         "IsRequired": true
       }
     ],
