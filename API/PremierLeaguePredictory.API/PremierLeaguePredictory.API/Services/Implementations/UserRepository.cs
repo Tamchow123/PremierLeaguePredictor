@@ -1,4 +1,5 @@
-﻿using PremierLeaguePredictory.API.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using PremierLeaguePredictory.API.Data;
 using PremierLeaguePredictory.API.Models.Domain;
 using PremierLeaguePredictory.API.Services.Interfaces;
 
@@ -18,6 +19,11 @@ namespace PremierLeaguePredictory.API.Services.Implementations
             await dbContext.Users.AddAsync(user);
             await dbContext.SaveChangesAsync();
             return user;
+        }
+
+        public async Task<Users?> GetByEmailAsync(string email)
+        {
+            return await dbContext.Users.FirstOrDefaultAsync(e => e.Email == email); 
         }
     }
 }

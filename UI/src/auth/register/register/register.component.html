@@ -1,24 +1,42 @@
 <body>
     <div class="container">
         <h2>Register</h2>
-        <form>
+        <form #form="ngForm" (ngSubmit)="onFormSubmit()">
             <div class="input-group">
                 <label for="email">Email:</label>
-                <input type="text" id="email" name="email" required>
+                <input type="text" id="email" name="email" [(ngModel)]="model.email" required email #emailInput="ngModel">
+                <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
+                  <small *ngIf="emailInput.errors?.['required']">Email is required.</small>
+                  <small *ngIf="emailInput.errors?.['email']">Enter a valid email.</small>
+                </div>
             </div>
             <div class="input-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" [(ngModel)]="model.username" required #usernameInput="ngModel">
+                <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error">
+                  <small *ngIf="usernameInput.errors?.['required']">Username is required.</small>
+              </div>
             </div>
             <div class="input-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="passwordHash">Password:</label>
+                <input type="password" id="passwordHash" name="passwordHash" [(ngModel)]="model.passwordHash" required minlength="8" #passwordInput="ngModel" >
+                <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
+                  <small *ngIf="passwordInput.errors?.['required']">Password is required.</small>
+                  <small *ngIf="passwordInput.errors?.['minlength']">Password must be at least 8 characters long.</small>
+              </div>
             </div>
             <div class="input-group">
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
-            </div>
+              <label for="confirmPassword">Confirm Password:</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required #confirmPasswordInput="ngModel" (input)="passwordMismatch = passwordMatch()">
+              <div *ngIf="passwordMismatch && confirmPasswordInput.touched" class="error">
+                  <small>Passwords do not match!</small>
+              </div>
+          </div>
+
             <button type="submit">Register</button>
+            <div *ngIf="errorMessage !== ''" class="error-box">
+              {{ errorMessage }}
+            </div>
         </form>
     </div>
 </body>

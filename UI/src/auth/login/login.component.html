@@ -3,12 +3,12 @@
         <h2>Login</h2>
         <form #form="ngForm" (ngSubmit)="onFormSubmit()">
             <div class="input-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="username">Email:</label>
+                <input type="text" id="username" name="username" required [(ngModel)]="model.email">
             </div>
             <div class="input-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="passwordHash">Password:</label>
+                <input type="password" id="passwordHash" name="passwordHash" required [(ngModel)]="model.passwordHash">
             </div>
             <button type="submit">Login</button>
         </form>
