@@ -1,1 +1,40 @@
-<p>stats works!</p>
+<div class="scorers-container">
+  <h2>Top Scorers</h2>
+
+  <!-- Display a loading message if scorers data hasn't arrived yet -->
+  <div *ngIf="!(scorers$ | async); else showScorers">
+    Loading scorers...
+  </div>
+
+  <!-- When scorers data arrives, display in a table -->
+  <ng-template #showScorers>
+    <table>
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Position</th>
+          <th>Matches</th>
+          <th>Goals</th>
+          <th>Team</th>
+          <th>Crest</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let scorer of scorers$ | async">
+          <td>{{ scorer.player.name }}</td>
+          <td>{{ scorer.player.section }}</td>
+          <td>{{ scorer.playedMatches }}</td>
+          <td>{{ scorer.goals }}</td>
+          <td>{{ scorer.team.name }}</td>
+          <td>
+            <img
+              [src]="scorer.team.crest"
+              [alt]="scorer.team.name + ' crest'"
+              class="team-crest"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+</div>

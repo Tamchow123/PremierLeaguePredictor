@@ -1,0 +1,79 @@
+<div class="home-container">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to the Premier League Predictor</h1>
+      <p>
+        Experience the best football action, latest news, and live updates right here.
+        And make your own predictions today!
+      </p>
+      <button>Explore Now</button>
+    </div>
+  </section>
+
+  <div class="home-container">
+    <section class="highlights">
+      <h2>Upcoming Matches</h2>
+
+      <div *ngIf="!upcomingMatches.length">
+        <p>No upcoming matches found!</p>
+      </div>
+
+      <div class="highlight-cards" *ngIf="upcomingMatches.length">
+        <div class="card" *ngFor="let match of upcomingMatches">
+          <div class="card-header">
+            <img [src]="match.homeTeam.crest" [alt]="match.homeTeam.name" />
+            <span>{{ match.homeTeam.tla }}</span>
+          </div>
+
+          <span class="vs">VS</span>
+
+          <div class="card-header">
+            <img [src]="match.awayTeam.crest" [alt]="match.awayTeam.name" />
+            <span>{{ match.awayTeam.tla }}</span>
+          </div>
+
+          <p class="match-info">
+            {{ match.utcDate | date:'shortTime' }}
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="stats-section">
+    <h2>Latest Stats</h2>
+    <div class="stats-grid">
+      <div class="stat">
+        <h3>Top Scorer</h3>
+
+        <ng-container *ngIf="topScorer; else loadingTopScorer">
+          <p>
+            {{ topScorer.player.name }}
+          </p>
+          <p>
+            {{ topScorer.goals }} goals
+          </p>
+          <img
+            [src]="topScorer.team.crest"
+            [alt]="topScorer.team.name + ' crest'"
+            class="stat-crest"
+          />
+        </ng-container>
+
+        <ng-template #loadingTopScorer>
+          <p>Loading top scorer...</p>
+        </ng-template>
+      </div>
+
+      <div class="stat">
+        <h3>Most Assists</h3>
+        <p>Player Y</p>
+      </div>
+      <div class="stat">
+        <h3>Clean Sheets</h3>
+        <p>Player Z</p>
+      </div>
+    </div>
+  </section>
+
+</div>
