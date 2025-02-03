@@ -23,7 +23,6 @@ builder.Services.AddHttpClient<IExternalApiService, ExternalApiService>();
 builder.Services.AddScoped<IExternalApiService, ExternalApiService>();
 builder.Services.AddScoped<ITeamsRepository, TeamsRepository>();
 builder.Services.AddScoped<IFixturesRepository, FixturesRepository>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 

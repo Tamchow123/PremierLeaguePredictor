@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PremierLeaguePredictory.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+087ea6ff6aeba53179b58d91b4fe4256aecdb500")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01165810d49dd9d2360d7dd2a889af19b2d5169f")]
 [assembly: System.Reflection.AssemblyProductAttribute("PremierLeaguePredictory.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PremierLeaguePredictory.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

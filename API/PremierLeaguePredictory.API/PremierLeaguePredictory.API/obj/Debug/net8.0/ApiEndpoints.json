@@ -72,37 +72,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "PremierLeaguePredictory.API.Controllers.UserController",
-    "Method": "CreateUser",
-    "RelativePath": "api/User",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "PremierLeaguePredictory.API.Models.DTO.CreateUserRequestDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "PremierLeaguePredictory.API.Controllers.UserController",
-    "Method": "GetUser",
-    "RelativePath": "api/User/login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "PremierLeaguePredictory.API.Models.DTO.GetUserRequestDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
   }
 ]

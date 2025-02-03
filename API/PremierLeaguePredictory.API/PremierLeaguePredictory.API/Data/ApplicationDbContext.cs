@@ -10,7 +10,6 @@ namespace PremierLeaguePredictory.API.Data
 
         }
 
-        public DbSet<Users> Users { get; set; }
         public DbSet<FixturesPredictions> FixturesPredictions { get; set; }
         public DbSet<EndOfSeasonPredictions> EndOfSeasonPredictions { get; set; }
         public DbSet<GoldenBootPredictions> GoldenBootPredictions { get; set; }
