@@ -341,3 +341,10 @@ C:\Users\tameemchowdhury\project\PremierLeaguePredictor\API\PremierLeaguePredict
 C:\Users\tameemchowdhury\project\PremierLeaguePredictor\API\PremierLeaguePredictory.API\PremierLeaguePredictory.API\obj\Debug\net8.0\PremierLeaguePredictory.API.genruntimeconfig.cache
 C:\Users\tameemchowdhury\project\PremierLeaguePredictor\API\PremierLeaguePredictory.API\PremierLeaguePredictory.API\obj\Debug\net8.0\ref\PremierLeaguePredictory.API.dll
 C:\Projects\PremierLeaguePredictor\PremierLeaguePredictor\API\PremierLeaguePredictory.API\PremierLeaguePredictory.API\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
+C:\Users\tameemchowdhury\project\PremierLeaguePredictor\API\PremierLeaguePredictory.API\PremierLeaguePredictory.API\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
+C:\Users\tameemchowdhury\project\PremierLeaguePredictor\API\PremierLeaguePredictory.API\PremierLeaguePredictory.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\tameemchowdhury\project\PremierLeaguePredictor\API\PremierLeaguePredictory.API\PremierLeaguePredictory.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\tameemchowdhury\project\PremierLeaguePredictor\API\PremierLeaguePredictory.API\PremierLeaguePredictory.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\tameemchowdhury\project\PremierLeaguePredictor\API\PremierLeaguePredictory.API\PremierLeaguePredictory.API\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\tameemchowdhury\project\PremierLeaguePredictor\API\PremierLeaguePredictory.API\PremierLeaguePredictory.API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\tameemchowdhury\project\PremierLeaguePredictor\API\PremierLeaguePredictory.API\PremierLeaguePredictory.API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll

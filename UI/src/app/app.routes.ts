@@ -5,12 +5,16 @@ import { StatsComponent } from '../stats/stats.component';
 import { LoginComponent } from '../auth/login/login.component';
 import { RegisterComponent } from '../auth/register/register/register.component';
 import { HomeComponent } from '../homepage/home/home.component';
+import { TablePredictionComponent } from '../tablePrediction/table-prediction/table-prediction.component';
 
 export const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'table', component: TableComponent },
   { path: 'matches', component: MatchesComponent },
   { path: 'stats', component: StatsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'login/register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'tablePredictions', component: TablePredictionComponent }
+
 ];

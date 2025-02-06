@@ -1,36 +1,49 @@
 <body>
-    <div class="club-logos">
-      <span style="padding-left: 100px;">Club Sites:</span>
+  <div class="club-logos">
+    <span style="padding-left: 100px;">Club Sites:</span>
 
-      <ng-container *ngIf="teams$ | async as teams" >
-        <a *ngFor="let team of teams" [href]="team.website" target="_blank">
-          <img [src]="team.logo" alt="{{ team.name }}">
+    <ng-container *ngIf="teams$ | async as teams">
+      <a *ngFor="let team of teams" [href]="team.website" target="_blank">
+        <img [src]="team.logo" alt="{{ team.name }}">
+      </a>
+    </ng-container>
+
+
+
+  </div>
+  <div>
+    <nav class="main-navbar">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+        <!-- Premier League Logo -->
+        <a class="pl-logo" href="https://www.premierleague.com/home">
+          <img src="/assets/pl-main-logo.png" alt="Premier League Logo">
         </a>
-      </ng-container>
+        <div class="nav-items" style="padding-left: 150px; padding-top: 2px;">
+          <a routerLink="home">Home</a>
+          <a routerLink="table">Table</a>
+          <a routerLink="matches">Matches</a>
+          <a routerLink="stats">Stats</a>
+          <a routerLink="tablePredictions">Table Predictions</a>
+        </div>
+
+        <div class="d-flex">
+          <ng-container *ngIf="user === undefined; else showLogout">
+            <a routerLink="login">Login</a>
+          </ng-container>
+          <ng-template #showLogout>
+              <span class="username">{{user?.email}}</span>
+              <a routerLink="home" (click)="onLogout()">Logout</a>
+          </ng-template>
+        </div>
 
 
 
-    </div>
-      <div>
-        <nav class="main-navbar">
-          <div class="container-fluid d-flex justify-content-between align-items-center">
-            <!-- Premier League Logo -->
-            <a class="pl-logo" href="https://www.premierleague.com/home">
-              <img src="/assets/pl-main-logo.png" alt="Premier League Logo">
-            </a>
-            <div class="nav-items" style="padding-left: 150px; padding-top: 2px;" >
-              <a  routerLink="home">Home</a>
-              <a  routerLink="table">Table</a>
-              <a  routerLink="matches">Matches</a>
-              <a  routerLink="stats">Stats</a>
-            </div>
-            <a  routerLink="login">Login</a>
-          </div>
-        </nav>
       </div>
+    </nav>
+  </div>
 
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

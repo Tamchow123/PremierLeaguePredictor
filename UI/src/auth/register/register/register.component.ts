@@ -13,7 +13,7 @@ import { AuthService } from '../../auth.service';
 })
 export class RegisterComponent {
   @ViewChild('form') registerForm!: NgForm; // Get reference to form
-
+  
 
   confirmPassword: string = '';
   errorMessage: string = '';

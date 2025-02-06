@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginRequest } from '../models/login-request.model';
 
 
 @Component({
@@ -14,26 +16,42 @@ import { AuthService } from '../auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+
+  model: LoginRequest;
 
   constructor(private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ){
-
+    this.model = {
+      email: '',
+      password: ''
+    }
   }
 
 
+  onFormSubmit(): void {
+    this.authService.login(this.model)
+    .subscribe({
+      next: (response) => {
+        // Set Auth Cookie
+        this.cookieService.set('Authorization', `Bearer ${response.token}`,
+          undefined, '/', undefined, true, 'Strict');
 
-
-  ngOnInit(): void {
+          // Set User
+          this.authService.setUser({
+            email: response.email,
+            roles: response.roles
+          })
+          
+          // Redirect to home
+          this.router.navigateByUrl('home');
+        }
+    });
   }
 
-  onFormSubmit(){
 
-  }
-
-  ngOnDestroy(){
-  }
 
 
 }

@@ -1,0 +1,29 @@
+<body>
+  <div class="table-container">
+    <h1>Your Premier League Table Prediction</h1>
+    <ng-container *ngIf="teams$ | async as teams">
+      <table cdkDropList cdkDropListOrientation="vertical" (cdkDropListDropped)="drop($event)" class="premier-league-table">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let team of teams" cdkDrag>
+            <td>
+              {{ teams.indexOf(team) + 1 }}
+            </td>
+            <td>
+              <img [src]="team.logo" width="20" />
+              {{ team.name }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <button class="btn btn-primary mt-5 ">Submit</button>
+
+  </div>
+
+</body>

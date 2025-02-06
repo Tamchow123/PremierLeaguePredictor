@@ -86,3 +86,10 @@
 .dropdown-item {
   color: white !important;
 }
+
+.username {
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-right: 20px;
+}
