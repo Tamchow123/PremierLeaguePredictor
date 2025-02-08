@@ -19,6 +19,7 @@ import { LoginRequest } from '../models/login-request.model';
 export class LoginComponent {
 
   model: LoginRequest;
+  errorMessage: string = '';
 
   constructor(private authService: AuthService,
     private router: Router,
@@ -44,9 +45,12 @@ export class LoginComponent {
             email: response.email,
             roles: response.roles
           })
-          
+
           // Redirect to home
           this.router.navigateByUrl('home');
+        },
+        error : (error) => {
+          this.errorMessage = 'Login failed: Incorrect email or password';
         }
     });
   }

@@ -8,5 +8,7 @@ namespace PremierLeaguePredictory.API.Services.Interfaces
 
         Task<IEnumerable<Teams>> GetAllAsync();
 
+        Task<Teams> GetByNameAsync(string teamName);
+
     }
 }

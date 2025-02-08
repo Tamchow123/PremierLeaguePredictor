@@ -6,9 +6,9 @@ namespace PremierLeaguePredictory.API.Models.Domain
     {
         [Key]
         public Guid EndOfSeasonPredictionsId { get; set; }
-        public Guid UserId { get; set; }
-        public int PredictedPosition { get; set; }
-        public int TeamId { get; set; }
+        public string UserId { get; set; }
+        public int Position { get; set; }
+        public Guid TeamId { get; set; }
         public string Season { get; set; }
     }
 }

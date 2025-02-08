@@ -1,29 +1,92 @@
-<body>
-  <div class="table-container">
-    <h1>Your Premier League Table Prediction</h1>
-    <ng-container *ngIf="teams$ | async as teams">
-      <table cdkDropList cdkDropListOrientation="vertical" (cdkDropListDropped)="drop($event)" class="premier-league-table">
-        <thead>
-          <tr>
-            <th>Position</th>
-            <th>Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let team of teams" cdkDrag>
-            <td>
-              {{ teams.indexOf(team) + 1 }}
-            </td>
-            <td>
-              <img [src]="team.logo" width="20" />
-              {{ team.name }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </ng-container>
-    <button class="btn btn-primary mt-5 ">Submit</button>
+<!-- table-prediction.component.html -->
+<div class="table-container">
+  <div style="display: flex; gap: 2rem; align-items: flex-start;">
+    <!-- ============= REAL TABLE COLUMN ============= -->
+    <div style="flex: 1;">
+      <h2>Premier League Table</h2>
+      <ng-container *ngIf="realTable$ | async as realTable; else noData">
+        <table class="premier-league-table">
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Team</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of realTable">
+              <td>{{ row.position }}</td>
+              <td>
+                <!-- Adjust if your Standing model has different field names -->
+                <img [src]="row.team.crest" width="20" />
+                {{ row.team.name }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+      <ng-template #noData>
+        <p>Loading or no data...</p>
+      </ng-template>
+    </div>
 
+    <!-- ============= USER PREDICTION COLUMN ============= -->
+    <div style="flex: 1;">
+      <ng-container *ngIf="(predictedTeams$ | async) as predictions">
+        <!-- If the user has predictions -->
+        <ng-container *ngIf="predictions.length > 0; else showInitialTable">
+          <!-- Could show the season from the first item, if they all share the same season -->
+          <h2>Your Predictions (Season: {{ predictions[0].season }})</h2>
+          <table class="premier-league-table">
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Team</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pred of predictions">
+                <td>{{ pred.position }}</td>
+                <td>
+                  <img [src]="pred.logo" width="20" />
+                  {{ pred.teamName }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </ng-container>
+
+        <!-- If there are no predictions, show the normal table with drag & drop. -->
+        <ng-template #showInitialTable>
+          <h2>Make Your Prediction</h2>
+          <ng-container *ngIf="teams$ | async as teams">
+            <table
+              cdkDropList
+              cdkDropListOrientation="vertical"
+              (cdkDropListDropped)="drop($event)"
+              class="premier-league-table"
+            >
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Team</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let team of teams" cdkDrag>
+                  <td>{{ teams.indexOf(team) + 1 }}</td>
+                  <td>
+                    <img [src]="team.logo" width="20" />
+                    {{ team.name }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="btn btn-primary mt-5" (click)="savePrediction()">
+              Submit Prediction
+            </button>
+          </ng-container>
+        </ng-template>
+      </ng-container>
+    </div>
   </div>
-
-</body>
+</div>

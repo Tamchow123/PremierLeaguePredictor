@@ -64,6 +64,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "PremierLeaguePredictory.API.Controllers.TablePredictionController",
+    "Method": "AddTablePrediction",
+    "RelativePath": "api/TablePrediction",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "PremierLeaguePredictory.API.Models.DTO.CreateTablePredictionRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PremierLeaguePredictory.API.Controllers.TablePredictionController",
+    "Method": "GetTablePredictionByEmail",
+    "RelativePath": "api/TablePrediction/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "PremierLeaguePredictory.API.Controllers.TeamController",
     "Method": "GetAllTeams",
     "RelativePath": "api/Team",

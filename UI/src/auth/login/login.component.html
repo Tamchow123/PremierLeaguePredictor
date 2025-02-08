@@ -12,6 +12,10 @@
             </div>
             <button type="submit">Login</button>
         </form>
+        <ng-container *ngIf="errorMessage">
+            <div class="error-box">{{ errorMessage }}</div>
+        </ng-container>
+
         <a routerLink="register">Don't have an account? Register now!</a>
     </div>
 </body>

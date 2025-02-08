@@ -36,6 +36,8 @@ builder.Services.AddScoped<IExternalApiService, ExternalApiService>();
 builder.Services.AddScoped<ITeamsRepository, TeamsRepository>();
 builder.Services.AddScoped<IFixturesRepository, FixturesRepository>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITablePredictionRepository, TablePredictionRepository>();
 
 builder.Services.AddIdentityCore<IdentityUser>()
     .AddRoles<IdentityRole>()
@@ -45,11 +47,11 @@ builder.Services.AddIdentityCore<IdentityUser>()
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
-    options.Password.RequireDigit = false;
+    options.Password.RequireDigit = true;
     options.Password.RequireLowercase = false;
     options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequireUppercase = false;
-    options.Password.RequiredLength = 6;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 8;
     options.Password.RequiredUniqueChars = 1;
 });
 

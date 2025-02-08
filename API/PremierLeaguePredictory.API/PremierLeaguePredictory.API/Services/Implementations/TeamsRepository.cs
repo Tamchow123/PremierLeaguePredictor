@@ -19,6 +19,19 @@ namespace PremierLeaguePredictory.API.Services.Implementations
             return await dbContext.Teams.ToListAsync();
         }
 
+        public async Task<Teams> GetByNameAsync(string teamName)
+        {
+            var existingTeam = await dbContext.Teams.FirstOrDefaultAsync(t => t.Name == teamName);
+
+            if (existingTeam == null)
+            {
+                return null;
+            }
+
+            return existingTeam;
+
+        }
+
         public async Task<Teams> UpdateAsync(Teams team)
         {
             var existingTeam = await dbContext.Teams.FirstOrDefaultAsync(x => x.Name == team.Name);

@@ -1,42 +1,71 @@
-<!-- <body>
-    <div class="container">
-        <h2>Register</h2>
-        <form #form="ngForm" (ngSubmit)="onFormSubmit()">
-            <div class="input-group">
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email" [(ngModel)]="model.email" required email #emailInput="ngModel">
-                <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
-                  <small *ngIf="emailInput.errors?.['required']">Email is required.</small>
-                  <small *ngIf="emailInput.errors?.['email']">Enter a valid email.</small>
-                </div>
-            </div>
-            <div class="input-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" [(ngModel)]="model.username" required #usernameInput="ngModel">
-                <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error">
-                  <small *ngIf="usernameInput.errors?.['required']">Username is required.</small>
-              </div>
-            </div>
-            <div class="input-group">
-                <label for="passwordHash">Password:</label>
-                <input type="password" id="passwordHash" name="passwordHash" [(ngModel)]="model.passwordHash" required minlength="8" #passwordInput="ngModel" >
-                <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
-                  <small *ngIf="passwordInput.errors?.['required']">Password is required.</small>
-                  <small *ngIf="passwordInput.errors?.['minlength']">Password must be at least 8 characters long.</small>
-              </div>
-            </div>
-            <div class="input-group">
-              <label for="confirmPassword">Confirm Password:</label>
-              <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required #confirmPasswordInput="ngModel" (input)="passwordMismatch = passwordMatch()">
-              <div *ngIf="passwordMismatch && confirmPasswordInput.touched" class="error">
-                  <small>Passwords do not match!</small>
-              </div>
-          </div>
+<body>
+  <div class="container">
+    <h2>Register</h2>
+    <!-- Use [disabled]="form.invalid || passwordMismatch" to prevent submission -->
+    <form #form="ngForm" (ngSubmit)="onFormSubmit()" novalidate>
+      <!-- EMAIL -->
+      <div class="input-group">
+        <label for="email">Email:</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          [(ngModel)]="model.email"
+          required
+          email
+          #emailInput="ngModel"
+        />
+        <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
+          <small *ngIf="emailInput.errors?.['required']">Email is required.</small>
+          <small *ngIf="emailInput.errors?.['email']">Enter a valid email.</small>
+        </div>
+      </div>
 
-            <button type="submit">Register</button>
-            <div *ngIf="errorMessage !== ''" class="error-box">
-              {{ errorMessage }}
-            </div>
-        </form>
-    </div>
-</body> -->
+      <!-- PASSWORD -->
+      <div class="input-group">
+        <label for="passwordHash">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="model.password"
+          required
+          pattern="^(?=.*[A-Z])(?=.*\d).{8,}$"
+          #passwordInput="ngModel"
+          (input)="passwordMismatch = passwordMatch()"
+        />
+        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
+          <small *ngIf="passwordInput.errors?.['required']">Password is required.</small>
+          <!-- pattern error covers uppercase+digit+8-chars -->
+          <small *ngIf="passwordInput.errors?.['pattern']">
+            Password must be at least 8 characters long, contain an uppercase letter and a digit.
+          </small>
+        </div>
+      </div>
+
+      <!-- CONFIRM PASSWORD -->
+      <div class="input-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          required
+          #confirmPasswordInput="ngModel"
+          (input)="passwordMismatch = passwordMatch()"
+        />
+        <div *ngIf="confirmPasswordInput.touched && passwordMismatch" class="error">
+          <small>Passwords do not match!</small>
+        </div>
+      </div>
+
+      <!-- SUBMIT BUTTON, DISABLED IF INVALID -->
+      <button type="submit" [disabled]="form.invalid || passwordMismatch">Register</button>
+
+      <div *ngIf="errorMessage" class="error-box">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+</body>
