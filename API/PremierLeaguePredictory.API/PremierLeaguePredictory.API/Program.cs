@@ -38,6 +38,7 @@ builder.Services.AddScoped<IFixturesRepository, FixturesRepository>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITablePredictionRepository, TablePredictionRepository>();
+builder.Services.AddScoped<IFixturePredictionRepository, FixturePredictionRepository>();
 
 builder.Services.AddIdentityCore<IdentityUser>()
     .AddRoles<IdentityRole>()

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PremierLeaguePredictory.API.Data;
 using PremierLeaguePredictory.API.Models.Domain;
+using PremierLeaguePredictory.API.Models.DTO;
 using PremierLeaguePredictory.API.Services.Interfaces;
 
 namespace PremierLeaguePredictory.API.Services.Implementations
@@ -13,6 +14,19 @@ namespace PremierLeaguePredictory.API.Services.Implementations
         {
             this.dbContext = dbContext;
         }
+
+        public Task<Fixtures> GetFixtureAsync(CreateFixturePredictionRequestDto fixture)
+        {
+            var existingFixture = dbContext.Fixtures.FirstOrDefaultAsync(x => x.HomeTeam == fixture.HomeTeam && x.AwayTeam == fixture.AwayTeam && x.Gameweek == fixture.Gameweek && x.Season == fixture.Season);
+
+            if (existingFixture == null)
+            {
+                return null;
+            }
+
+            return existingFixture;
+        }
+
         public async Task<Fixtures> UpdateAsync(Fixtures fixture)
         {
             var existingFixture = await dbContext.Fixtures.FirstOrDefaultAsync(x => x.HomeTeam == fixture.HomeTeam && x.AwayTeam == fixture.AwayTeam && x.Gameweek == fixture.Gameweek);

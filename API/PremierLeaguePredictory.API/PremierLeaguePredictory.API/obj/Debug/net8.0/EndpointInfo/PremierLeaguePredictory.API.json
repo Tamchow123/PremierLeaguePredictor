@@ -127,6 +127,112 @@
         }
       }
     },
+    "/api/FixturesPrediction": {
+      "post": {
+        "tags": [
+          "FixturesPrediction"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFixturePredictionRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFixturePredictionRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFixturePredictionRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/FixturesPrediction/{email}": {
+      "get": {
+        "tags": [
+          "FixturesPrediction"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/TablePrediction": {
+      "post": {
+        "tags": [
+          "TablePrediction"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTablePredictionRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTablePredictionRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTablePredictionRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/TablePrediction/{email}": {
+      "get": {
+        "tags": [
+          "TablePrediction"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Team": {
       "get": {
         "tags": [
@@ -200,6 +306,44 @@
   },
   "components": {
     "schemas": {
+      "CreateFixturePredictionRequestDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "kickOff": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "gameweek": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "season": {
+            "type": "string",
+            "nullable": true
+          },
+          "homeTeam": {
+            "type": "string",
+            "nullable": true
+          },
+          "awayTeam": {
+            "type": "string",
+            "nullable": true
+          },
+          "predictedHomeTeamScore": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "predictedAwayTeamScore": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateFixtureRequestDto": {
         "type": "object",
         "properties": {
@@ -239,6 +383,23 @@
           },
           "season": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateTablePredictionRequestDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "predictions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PositionTeamDto"
+            },
             "nullable": true
           }
         },
@@ -334,6 +495,20 @@
             "nullable": true
           },
           "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PositionTeamDto": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "team": {
             "type": "string",
             "nullable": true
           }

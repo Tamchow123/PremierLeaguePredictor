@@ -48,7 +48,7 @@ export class TablePredictionService {
     if (!this.user) {
       console.error('User not found');
       // Return an empty observable or throw an error.
-      return EMPTY; // import { EMPTY } from 'rxjs';
+      return EMPTY; 
     }
 
     return teams$.pipe(

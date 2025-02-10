@@ -64,6 +64,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "PremierLeaguePredictory.API.Controllers.FixturesPredictionController",
+    "Method": "AddFixturePrediction",
+    "RelativePath": "api/FixturesPrediction",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "PremierLeaguePredictory.API.Models.DTO.CreateFixturePredictionRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PremierLeaguePredictory.API.Controllers.FixturesPredictionController",
+    "Method": "GetFixturePredictionByEmail",
+    "RelativePath": "api/FixturesPrediction/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "PremierLeaguePredictory.API.Controllers.TablePredictionController",
     "Method": "AddTablePrediction",
     "RelativePath": "api/TablePrediction",
