@@ -43,6 +43,8 @@ export class MatchesService {
         );
     }
 
+    
+
     // Otherwise, fetch the current match day and proceed
     return this.getMatchDay().pipe(
       switchMap((currentMatchday) => {
@@ -62,6 +64,16 @@ export class MatchesService {
             map((response) => response.matches) // Extract the matches array
           );
       })
+    );
+  }
+  
+  getUpcomingFixtures(): Observable<Matches[]> {
+    return this.http.get<{matches: Matches[]}>(
+      `http://localhost:4200/api/v4/competitions/PL/matches?status=SCHEDULED`, {
+        headers: this.headers
+      }
+    ).pipe(
+      map(response => response.matches) // Extract the matches array
     );
   }
 

@@ -1,1 +1,48 @@
-<p>fixture-prediction works!</p>
+<div class="fixtures-container">
+    <ng-container *ngIf="matches$ | async as matches">
+  
+      <ng-container *ngFor="let match of matches">
+        <!-- Date Header -->
+        <!-- <ng-container *ngIf="shouldUpdateDate(match.utcDate)"> -->
+          <!-- <div class="date-header">
+            <h2>{{ showDate }}</h2>
+          </div> -->
+        <!-- </ng-container> -->
+  
+        <!-- Match Fixture -->
+        <div class="fixture">
+          <div class="team">
+            <img [src]="match.homeTeam.crest" alt="{{ match.homeTeam.name }} logo" class="team-logo" />
+            <span class="team-name">{{ match.homeTeam.shortName }}</span>
+          </div>
+          <ng-container *ngIf="match.status === 'FINISHED'">
+            <div class="score">
+              <span class="box black-box">{{ match.score.fullTime.home }}</span> <span class="big-dash">-</span> <span class="box black-box">{{ match.score.fullTime.away }}</span>
+            </div>
+          </ng-container>
+  
+          <ng-container *ngIf="match.status === 'IN_PLAY' || match.status === 'PAUSED'">
+            <div class="score">
+              <span class="box red-box">{{ match.score.fullTime.home }}</span> <span class="big-dash">-</span>  <span class="box red-box">{{ match.score.fullTime.away }}</span>
+            </div>
+          </ng-container>
+  
+  
+          <ng-container *ngIf="match.status === 'TIMED'">
+            <div class="match-time">{{ match.utcDate | date: 'shortTime' }}</div>
+          </ng-container>
+
+          <ng-container *ngIf="match.status === 'SCHEDULED'">
+            <div class="match-time">SCHEDULED</div>
+          </ng-container>
+  
+          <div class="team away-team">
+            <span class="team-name">{{ match.awayTeam.shortName }}</span>
+            <img [src]="match.awayTeam.crest" alt="{{ match.awayTeam.name }} logo" class="team-logo" />
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+  
+  
