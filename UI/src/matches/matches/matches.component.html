@@ -12,7 +12,7 @@
 
 
 <div class="fixtures-container">
-  <ng-container *ngIf="matches$ | async as matches">
+  <ng-container *ngIf="matches$ | async as matches; else loading">
 
     <ng-container *ngFor="let match of matches">
       <!-- Date Header -->
@@ -52,5 +52,12 @@
       </div>
     </ng-container>
   </ng-container>
+
 </div>
+
+  <ng-template #loading>
+    <div class="loader-container">
+      <div class="custom-loader"></div>
+    </div>
+  </ng-template>
 

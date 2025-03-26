@@ -3,7 +3,7 @@
     <ng-container *ngIf="filter$ | async as filter">
       <h1>Premier League Table Season {{filter.season}}</h1>
     </ng-container>
-        <ng-container *ngIf="standings$ | async as standings">
+        <ng-container *ngIf="standings$ | async as standings; else loading">
       <table class="premier-league-table">
         <thead>
           <tr>
@@ -39,7 +39,9 @@
       </table>
     </ng-container>
     <ng-template #loading>
-      <p>Loading standings...</p>
+        <div class="loader-container">
+          <div class="custom-loader"></div>
+        </div>
     </ng-template>
   </div>
 </body>

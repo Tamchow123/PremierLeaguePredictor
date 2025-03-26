@@ -8,18 +8,15 @@ namespace PremierLeaguePredictory.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FixturesPredictionController : ControllerBase
+    public class FixturesPredictionController(IFixturePredictionRepository fixturePredictionRepository, 
+        IUserRepository userRepository, 
+        IFixturesRepository fixturesRepository) : ControllerBase
     {
-        private readonly IFixturePredictionRepository fixturePredictionRepository;
-        private readonly IUserRepository userRepository;
-        private readonly IFixturesRepository fixturesRepository;
+        private readonly IFixturePredictionRepository fixturePredictionRepository = fixturePredictionRepository;
+        private readonly IUserRepository userRepository = userRepository;
+        private readonly IFixturesRepository fixturesRepository = fixturesRepository;
 
-        public FixturesPredictionController(IFixturePredictionRepository fixturePredictionRepository, IUserRepository userRepository, IFixturesRepository fixturesRepository)
-        {
-            this.fixturePredictionRepository = fixturePredictionRepository;
-            this.userRepository = userRepository;
-            this.fixturesRepository = fixturesRepository;
-        }
+
 
         // POST: {apibaseurl}/api/FixturesPredictions
         [HttpPost]
@@ -47,6 +44,12 @@ namespace PremierLeaguePredictory.API.Controllers
 
             // Convert dto to domain model
 
+            if (fixture == null)
+            {
+                return NotFound("Fixture doesn't exist");
+
+            }
+
 
             var prediction = new FixturesPredictions
             {
@@ -56,8 +59,6 @@ namespace PremierLeaguePredictory.API.Controllers
                 PredictedAwayScore = request.PredictedAwayTeamScore,
                 PredictionDate = DateTime.Now,
                 PredictedWinner = predictedWinner,
-
-
             };
 
             await fixturePredictionRepository.CreateAsync(prediction);
